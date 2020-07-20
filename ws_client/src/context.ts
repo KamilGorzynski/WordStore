@@ -9,6 +9,8 @@ export const initialState: State = {
   token: '',
     userName: '',
   };
+
+  type Action = { type: string; payload: string }
   
 export const ACTIONS = {
     SET_TOKEN: 'SET_TOKEN',
@@ -28,4 +30,4 @@ export const ACTIONS = {
     }
   };
   
-  export const StoreContext = createContext<any>(null);
+  export const StoreContext = createContext<any>('');

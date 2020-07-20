@@ -10,17 +10,17 @@ const App: FunctionComponent = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
   
   useEffect(() => {
-    if (localStorage.getItem("token") === undefined){
+    if (localStorage.getItem("token") === null){
       localStorage.setItem("token", '');
       dispatch({
         type: ACTIONS.SET_TOKEN,
-        payload: false 
+        payload: '' 
       });
     }
     else {
       dispatch({
         type: ACTIONS.SET_TOKEN,
-        payload: Boolean(localStorage.getItem("token")) 
+        payload: localStorage.getItem("token") 
       });
     }
     
@@ -29,7 +29,6 @@ const App: FunctionComponent = () => {
   return (
     <StoreContext.Provider value={{ state, dispatch }}>
       <div className="App">
-        { console.log(state.token ) }
         { state.token ? <Home/> : <Login /> }
       </div>
     </StoreContext.Provider>

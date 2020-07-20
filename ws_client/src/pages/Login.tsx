@@ -89,7 +89,7 @@ const Login: FunctionComponent = () => {
               payload: token 
           });
         }, (error) => {
-            setCommunicate('Niepoprawny login lub hasło')
+            setCommunicate('Incorrect login or password')
       
         });
         login.current.value = ''

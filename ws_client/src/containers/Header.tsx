@@ -6,6 +6,7 @@ import { StoreContext } from '../context'
 import bookIcon from '../assets/book3.png'
 import Nav from './Nav'
 import NavLi from '../components/NavLi'
+import config from '../config/config'
 
 const HeaderContainer = styled.div`
   width: 100%;
@@ -45,8 +46,8 @@ const LogOutHeader = styled.h2`
   color: rgb(93, 190, 1);
   margin: 1rem;
   cursor: pointer;
-  &: hover {
-    text-decoration: underline;
+  &:hover {
+    text-decoration: underscore;
   }
 `
 
@@ -70,7 +71,7 @@ const Header: FunctionComponent = () => {
         <HeaderItemsDiv>
           <Ul>
             <NavLi className='BlockAncor' activeClassName='active' to='asd1' value={ state.userName }/>
-            <LogOutHeader onClick={ logOutUser }>log out</LogOutHeader>
+            <LogOutHeader onClick={ logOutUser }>{ config.nav.log_out }</LogOutHeader>
           </Ul>
           
         </HeaderItemsDiv>

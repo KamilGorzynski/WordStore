@@ -20,7 +20,7 @@ type LiProps = {
     exact?: boolean,
     activeClassName?: string | undefined,
     to: string,
-    value: string
+    value?: string
   }
 
 const NavLi: FunctionComponent<LiProps> = ({ className, exact, activeClassName, to, value }) => {

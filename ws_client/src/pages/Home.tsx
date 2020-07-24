@@ -1,10 +1,11 @@
 /** @jsx jsx */
-import { jsx } from '@emotion/core';
-import styled from '@emotion/styled';
-import React, { FunctionComponent } from 'react';
+import { jsx } from '@emotion/core'
+import styled from '@emotion/styled'
+import { FunctionComponent } from 'react'
 import Header from '../containers/Header'
-import Hero from '../containers/Hero'
-import{ BrowserRouter, Route, Switch} from 'react-router-dom';
+import{ BrowserRouter, Route, Switch} from 'react-router-dom'
+import List from './List'
+
 
 const HomeContainer = styled.div`
   width: 100%;
@@ -19,18 +20,13 @@ const Home: FunctionComponent = () => {
     <BrowserRouter>
       <div>
         <Header />
-        <Hero />
         <HomeContainer>
-          {/* <Switch>
-            <Route exact path="/" component={Home} />
-            <Route path="/contact" component={Contact} />
-            <Route path="/about" component={About} />
-            <Route component={Error} />
-          </Switch> */}
+          <Switch>
+            <Route exact path="/" component={List} />
+          </Switch>
         </HomeContainer>
       </div>
     </BrowserRouter>
-    
     
   );
 }

@@ -20,10 +20,9 @@ const App: FunctionComponent = () => {
     else {
       dispatch({
         type: ACTIONS.SET_TOKEN,
-        payload: localStorage.getItem("token") 
+        payload: String(localStorage.getItem("token")) 
       });
     }
-    
   }, [state.token])
 
   return (

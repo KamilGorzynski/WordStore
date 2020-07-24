@@ -3,18 +3,38 @@ body {
   font-family: georgia;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  /* background-image: url('assets/wood.jpg'); */
-  background-color: rgb(7, 50, 61);
+  /* background-color: rgb(7, 50, 61); */
+  background-color: rgb(245, 245, 245);
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
-    background-color: rgb(38, 133, 221);
+    background-color: rgb(30, 170, 93);
 }
 
 *, *::before, *::after {
   box-sizing: border-box;
   outline: none;
   outline-style: none;
+}
+
+
+a,
+a:link,
+a:visited,
+a:active {
+  text-decoration: none;
+  color: white;
+}
+a:hover {
+  color: rgb(93, 190, 1);
+  display: block;
+}
+
+.BlockAncor:hover {
+  color: rgb(93, 190, 1) !important;
+  border: 2px rgb(93, 190, 1) solid;
+  border-radius: 0.5rem;
+  width: 8rem;
 }

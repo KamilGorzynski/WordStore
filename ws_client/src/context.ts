@@ -10,14 +10,14 @@ export const initialState: State = {
     userName: '',
   };
 
-  type Action = { type: string; payload: string }
+type Action = { type: string; payload: string }
   
 export const ACTIONS = {
     SET_TOKEN: 'SET_TOKEN',
     SET_USER_NAME: 'SET_USER_NAME',
   };
   
-  export const reducer = (state: State, action: any) => {
+  export const reducer = (state: State, action: Action): State => {
     switch (action.type) {
       case ACTIONS.SET_TOKEN:
         return {...state, token: action.payload };

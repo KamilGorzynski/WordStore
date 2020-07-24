@@ -1,11 +1,18 @@
 /** @jsx jsx */
 import { jsx } from '@emotion/core';
 import styled from '@emotion/styled';
-import userIcon from '../assets/english.svg'
+import mainIcon from '../assets/book.png'
 import { useRef, useContext, FunctionComponent, useState } from 'react'
 import { ACTIONS, StoreContext } from '../context'
 import axios from 'axios';
+import { AxiosResponse, AxiosError } from 'axios'
 
+
+const LoginBackground = styled.div`
+  background-color: rgb(7, 50, 61);
+  width: 100vw;
+  height: 100vh;
+`
 
 const LoginContainer = styled.div`
   position: absolute;
@@ -28,8 +35,8 @@ const UserIcon = styled.img`
   margin: 1rem 0;
 `
 
-const LightBlueSpan = styled.span`
-  color: rgb(38, 133, 221);
+const LightGreenSpan = styled.span`
+  color: rgb(93, 190, 1);
 `
 
 const LoginForm = styled.div`
@@ -51,7 +58,7 @@ const LoginInput = styled.input`
 `
 
 const LoginButton = styled.button`
-  background-color: rgb(38, 133, 221);
+  background-color: rgb(93, 190, 1);
   color: white;
   width: 18rem;
   height: 3rem;
@@ -76,39 +83,48 @@ const Login: FunctionComponent = () => {
   
   const logInUser = () => {
     if(login.current && password.current) {
+        const username: string = login.current?.value
         axios.post('http://localhost:8000/api-token-auth/', {
-            username: login.current?.value,
+            username: username,
             password: password.current?.value
           })
-        .then((response) => {
+        .then((response: AxiosResponse) => {
             console.log(response)
             const token = response.data.token
             localStorage.setItem("token", String(token))
+            localStorage.setItem("username", username)
             dispatch({
               type: ACTIONS.SET_TOKEN,
               payload: token 
-          });
-        }, (error) => {
+            });
+            dispatch({
+              type: ACTIONS.SET_USER_NAME,
+              payload: username 
+            });
+        }, (error: AxiosError) => {
+          console.log(JSON.stringify(error))
             setCommunicate('Incorrect login or password')
-      
-        });
+        })
         login.current.value = ''
         password.current.value = ''
     }
   }
 
     return (
-      <LoginContainer>
-        <UserIcon src={ userIcon } alt="user"/>
-        <LoginHeader><LightBlueSpan>Word</LightBlueSpan> Store</LoginHeader>
-        <LoginForm >
-          <LoginInput ref={ login } type='text' placeholder="Login"/>
-          <LoginInput ref={ password } type='password' placeholder="Password"/>
-          { communicate && <RedH4>{ communicate }</RedH4> }
-          <LoginButton onClick={ logInUser }>Log in</LoginButton>
-          
-        </LoginForm>
-      </LoginContainer>
+      <LoginBackground>
+        <LoginContainer>
+          <UserIcon src={ mainIcon } alt="user"/>
+          <LoginHeader><LightGreenSpan>Word</LightGreenSpan> Store</LoginHeader>
+          <LoginForm >
+            <LoginInput ref={ login } type='text' placeholder="Login"/>
+            <LoginInput ref={ password } type='password' placeholder="Password"/>
+            { communicate && <RedH4>{ communicate }</RedH4> }
+            <LoginButton onClick={ logInUser }>Log in</LoginButton>
+            
+          </LoginForm>
+        </LoginContainer>
+      </LoginBackground>
+      
     );
   }
   

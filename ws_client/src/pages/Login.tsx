@@ -36,7 +36,7 @@ const UserIcon = styled.img`
 `
 
 const LightGreenSpan = styled.span`
-  color: rgb(93, 190, 1);
+  color: rgb(30, 170, 93);
 `
 
 const LoginForm = styled.div`
@@ -58,7 +58,7 @@ const LoginInput = styled.input`
 `
 
 const LoginButton = styled.button`
-  background-color: rgb(93, 190, 1);
+  background-color: rgb(30, 170, 93);
   color: white;
   width: 18rem;
   height: 3rem;

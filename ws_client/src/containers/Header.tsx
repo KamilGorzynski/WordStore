@@ -43,7 +43,7 @@ const Ul = styled.ul`
 `
 
 const LogOutHeader = styled.h2`
-  color: rgb(93, 190, 1);
+  color: rgb(30, 170, 93);
   margin: 1rem;
   cursor: pointer;
   &:hover {

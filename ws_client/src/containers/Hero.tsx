@@ -32,6 +32,7 @@ const HeroHeader = styled.h2`
 const HeroParagraph = styled.p`
   margin: 2rem 0;
   font-size: 1.3rem;
+  text-align: left;
 `
 
 const Icon = styled.img`

@@ -1,10 +1,9 @@
 body {
   margin: 0;
-  font-family: georgia;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  /* background-color: rgb(7, 50, 61); */
   background-color: rgb(245, 245, 245);
+  font-family: 'Ubuntu', sans-serif;
 }
 
 code {
@@ -28,7 +27,7 @@ a:active {
   color: white;
 }
 a:hover {
-  color: rgb(93, 190, 1);
+  color: rgb(30, 170, 93);
   display: block;
 }
 
@@ -38,8 +37,8 @@ a:hover {
 }
 
 .BlockAncor:hover {
-  color: rgb(93, 190, 1) !important;
-  border: 2px rgb(93, 190, 1) solid;
+  color: rgb(30, 170, 93) !important;
+  border: 2px rgb(30, 170, 93) solid;
   border-radius: 0.5rem;
   height: 3rem;
 }

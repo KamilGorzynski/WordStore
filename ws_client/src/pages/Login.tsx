@@ -78,8 +78,8 @@ const Login: FunctionComponent = () => {
   const [communicate, setCommunicate] = useState<string>(''); 
     
 
-  const login = useRef<HTMLInputElement | null>(null);
-  const password = useRef<HTMLInputElement | null>(null);
+  const login = useRef<HTMLInputElement | any>(null);
+  const password = useRef<HTMLInputElement | any>(null);
   
   const logInUser = () => {
     if(login.current && password.current) {
@@ -89,7 +89,6 @@ const Login: FunctionComponent = () => {
             password: password.current?.value
           })
         .then((response: AxiosResponse) => {
-            console.log(response)
             const token = response.data.token
             localStorage.setItem("token", String(token))
             localStorage.setItem("username", username)
@@ -102,11 +101,11 @@ const Login: FunctionComponent = () => {
               payload: username 
             });
         }, (error: AxiosError) => {
-          console.log(JSON.stringify(error))
-            setCommunicate('Incorrect login or password')
+          setCommunicate('Incorrect login or password')
+          login.current.value = ''
+          password.current.value = ''
         })
-        login.current.value = ''
-        password.current.value = ''
+        
     }
   }
 

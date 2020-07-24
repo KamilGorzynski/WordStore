@@ -32,9 +32,19 @@ a:hover {
   display: block;
 }
 
+.BlockAncor{
+  padding-top: 0.5rem;
+  display: block;
+}
+
 .BlockAncor:hover {
   color: rgb(93, 190, 1) !important;
   border: 2px rgb(93, 190, 1) solid;
   border-radius: 0.5rem;
-  width: 8rem;
+  height: 3rem;
+}
+
+ul, li {
+  margin: 0;
+  padding: 0;
 }

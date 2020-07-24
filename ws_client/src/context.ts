@@ -17,17 +17,17 @@ export const ACTIONS = {
     SET_USER_NAME: 'SET_USER_NAME',
   };
   
-  export const reducer = (state: State, action: Action): State => {
-    switch (action.type) {
-      case ACTIONS.SET_TOKEN:
-        return {...state, token: action.payload };
+export const reducer = (state: State, action: Action): State => {
+  switch (action.type) {
+    case ACTIONS.SET_TOKEN:
+      return {...state, token: action.payload };
 
-      case ACTIONS.SET_USER_NAME:
-        return {...state, userName: action.payload };
-  
-      default:
-        return state;
-    }
-  };
-  
-  export const StoreContext = createContext<any>('');
+    case ACTIONS.SET_USER_NAME:
+      return {...state, userName: action.payload };
+
+    default:
+      return state;
+  }
+};
+
+export const StoreContext = createContext<any>('');

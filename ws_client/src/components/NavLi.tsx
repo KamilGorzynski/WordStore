@@ -7,7 +7,6 @@ import { FunctionComponent } from 'react';
 const Li = styled.li`
   color: white;
   width: 8rem;
-  height: 4rem;
   display: block;
   text-decoration: none;
   text-align: center;
@@ -17,9 +16,9 @@ const Li = styled.li`
 `
 
 type LiProps = {
-    className: string | undefined,
-    exact: boolean | undefined,
-    activeClassName: string | undefined,
+    className?: string,
+    exact?: boolean,
+    activeClassName?: string | undefined,
     to: string,
     value: string
   }

@@ -22,6 +22,10 @@ const App: FunctionComponent = () => {
         type: ACTIONS.SET_TOKEN,
         payload: String(localStorage.getItem("token")) 
       });
+      dispatch({
+        type: ACTIONS.SET_USER_NAME,
+        payload: String(localStorage.getItem("username")) 
+      });
     }
   }, [state.token])
 

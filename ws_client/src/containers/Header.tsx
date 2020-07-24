@@ -70,8 +70,8 @@ const Header: FunctionComponent = () => {
         </HeaderItemsDiv>
         <HeaderItemsDiv>
           <Ul>
-            <NavLi className='BlockAncor' activeClassName='active' to='asd1' value={ state.userName }/>
-            <LogOutHeader onClick={ logOutUser }>{ config.nav.log_out }</LogOutHeader>
+            <NavLi className='BlockAncor' activeClassName='active' to='user-settings' value={ state.userName }/>
+            <LogOutHeader onClick={ logOutUser }>{ config.nav.logOut }</LogOutHeader>
           </Ul>
           
         </HeaderItemsDiv>

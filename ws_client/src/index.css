@@ -9,7 +9,7 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
-    background-color: rgb(30, 170, 93);
+    background-color: rgb(44, 44, 44);
 }
 
 *, *::before, *::after {

@@ -4,7 +4,7 @@ const config = {
         'add': 'Add',
         'guess': 'Guess',
         'grammar': 'Grammar',
-        'log_out': 'Log Out'
+        'logOut': 'Log Out'
     },
     'list': {
         'header': 'Word List',

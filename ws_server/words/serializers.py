@@ -10,4 +10,4 @@ class WordSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Word
-        fields = ('word', 'definition', 'example', 'user')
+        fields = ('id', 'word', 'definition', 'example', 'user')

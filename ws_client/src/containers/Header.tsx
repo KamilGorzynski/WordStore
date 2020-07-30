@@ -47,7 +47,7 @@ const LogOutHeader = styled.h2`
   margin: 1rem;
   cursor: pointer;
   &:hover {
-    text-decoration: underscore;
+    text-decoration: underline;
   }
 `
 

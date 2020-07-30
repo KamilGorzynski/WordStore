@@ -4,6 +4,7 @@ import styled from '@emotion/styled';
 import mainIcon from '../assets/book.png'
 import { useRef, useContext, FunctionComponent, useState } from 'react'
 import { ACTIONS, StoreContext } from '../context'
+import Button from '../components/Button'
 import axios from 'axios';
 import { AxiosResponse, AxiosError } from 'axios'
 
@@ -46,7 +47,7 @@ const LoginForm = styled.div`
   background-color: rgb(250, 250, 250);
   border-radius: 0.2rem;
 `
-    
+
 const LoginInput = styled.input`
   width: 18rem;
   height: 3rem;
@@ -54,17 +55,6 @@ const LoginInput = styled.input`
   background-color: rgb(245, 245, 245);
   margin: 0.5rem 0;
   font-size: 1.2rem;
-  border-radius: 0.2rem;
-`
-
-const LoginButton = styled.button`
-  background-color: rgb(30, 170, 93);
-  color: white;
-  width: 18rem;
-  height: 3rem;
-  margin: 0.5rem 0 1rem 0;
-  font-size: 1.2rem;
-  cursor: pointer;
   border-radius: 0.2rem;
 `
 
@@ -117,7 +107,7 @@ const Login: FunctionComponent = () => {
             <LoginInput ref={ login } type='text' placeholder="Login"/>
             <LoginInput ref={ password } type='password' placeholder="Password"/>
             { communicate && <RedH4>{ communicate }</RedH4> }
-            <LoginButton onClick={ logInUser }>Log in</LoginButton>
+            <Button onClickHandler={ logInUser } value='Log In'/>
             
           </LoginForm>
         </LoginContainer>

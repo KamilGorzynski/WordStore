@@ -5,9 +5,8 @@ import { FunctionComponent } from 'react';
 import deleteIcon from '../assets/delete.png'
 import modifyIcon from '../assets/modify.png'
 import translatorIcon from '../assets/translator.png'
-import { WordObject } from '../types'
 import axios from 'axios'
-import { AxiosResponse, AxiosError } from 'axios'
+import { AxiosError } from 'axios'
 
 const WordCardContainer = styled.div`
   /* background-color: rgb(44, 44, 44); */
@@ -38,7 +37,7 @@ const Icon = styled.img`
   margin: 1rem 0;
   cursor: pointer;
   transition: 0.3s ease-in-out;
-  &: hover {
+  &:hover {
     transform: scale(1.1);
   }
 `

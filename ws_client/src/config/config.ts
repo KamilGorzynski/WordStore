@@ -9,6 +9,10 @@ const config = {
     'list': {
         'header': 'Word List',
         'paragraph': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec dictum eu dolor vitae laoreetSed dapibus, leo non tristique hendrerit, dui nisl convallis lorem, eu pellentesque quam elit vel arcu.'
+    },
+    'add': {
+        'header': 'Add Word',
+        'paragraph': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec dictum eu dolor vitae laoreetSed dapibus, leo non tristique hendrerit, dui nisl convallis lorem, eu pellentesque quam elit vel arcu.'
     }
 }
 

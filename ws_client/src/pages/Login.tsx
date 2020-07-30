@@ -105,7 +105,6 @@ const Login: FunctionComponent = () => {
           login.current.value = ''
           password.current.value = ''
         })
-        
     }
   }
 

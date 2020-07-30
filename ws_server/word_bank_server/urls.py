@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.urls import path
-from django.conf.urls import url, include
+from django.conf.urls import include
 from rest_framework import routers
 from users.views import UserViewSet, GroupViewSet
 from words.views import WordsViewSet

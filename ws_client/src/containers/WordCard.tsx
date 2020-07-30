@@ -1,16 +1,17 @@
 /** @jsx jsx */
-import { jsx } from '@emotion/core';
+import { css, jsx } from '@emotion/core';
 import styled from '@emotion/styled';
 import { FunctionComponent } from 'react';
 import deleteIcon from '../assets/delete.png'
 import modifyIcon from '../assets/modify.png'
 import translatorIcon from '../assets/translator.png'
 import { WordObject } from '../types'
-import { authRequest } from '../axios'
+import axios from 'axios'
 import { AxiosResponse, AxiosError } from 'axios'
 
 const WordCardContainer = styled.div`
-  background-color: rgb(44, 44, 44);
+  /* background-color: rgb(44, 44, 44); */
+  background-color: rgb(60, 60, 60);
   width: 70%;
   height: 15rem;
   border-radius: 1rem;
@@ -36,6 +37,10 @@ const Icon = styled.img`
   width: 2.5rem;
   margin: 1rem 0;
   cursor: pointer;
+  transition: 0.3s ease-in-out;
+  &: hover {
+    transform: scale(1.1);
+  }
 `
 
 const WordCardDiv = styled.div`
@@ -46,22 +51,45 @@ const DefinitionH3 = styled.h3`
   margin-left: 2rem;
 `
 
+type WordCartProps = {
+  id: number,
+  word: string,
+  definition: string,
+  example: string,
+  user: object,
+  modulo: boolean,
+}
 
 
-const WordCard: FunctionComponent<WordObject>= ({ id, word, definition, example, user }) => {
+const WordCard: FunctionComponent<WordCartProps>= ({ id, word, definition, example, user, modulo }) => {
 
   const deleteWord = () => {
-    console.log(id)
+    const authRequest = axios.create({
+      baseURL: 'http://localhost:8000',
+      headers: {'Authorization': `Token ${localStorage.getItem('token')}`}
+    });
     authRequest.delete(`/words/${id}`)
-        .then((response: AxiosResponse) => {
+        .then(() => {
             window.location.reload()
         }, (error: AxiosError) => {
           console.log(error)
         })
   }
 
+  const cardColor: string = modulo ? 'rgb(30, 30, 30)' : 'rgb(70, 70, 70)'
+
     return (
-         <WordCardContainer>
+          <div
+            css={css`
+              background-color: ${cardColor};
+              width: 70%;
+              height: 15rem;
+              border-radius: 1rem;
+              margin: 2rem auto;
+              padding: 1.5rem;
+              color: white;
+            `}
+          >
              <HeaderContainer>
                <h2>{ word }</h2>
                 <HeaderItems>
@@ -82,7 +110,7 @@ const WordCard: FunctionComponent<WordObject>= ({ id, word, definition, example,
                 <DefinitionH3>{ example }</DefinitionH3>
              </WordCardDiv>
              
-         </WordCardContainer>         
+         </div>         
     )
 }
 

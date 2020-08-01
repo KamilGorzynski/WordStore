@@ -2,12 +2,12 @@ import {createContext} from 'react';
 
 type State = {
   token: String,
-    userName: String,
+  userName: String,
  }
 
 export const initialState: State = {
   token: '',
-    userName: '',
+  userName: '',
   };
 
 type Action = { type: string; payload: string }

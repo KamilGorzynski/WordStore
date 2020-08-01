@@ -5,6 +5,9 @@ import mainIcon from '../assets/book.png'
 import { useRef, useContext, FunctionComponent, useState } from 'react'
 import { ACTIONS, StoreContext } from '../context'
 import Button from '../components/Button'
+import Input from '../components/Input'
+import Message from '../components/Message'
+import config from '../config/config'
 import axios from 'axios';
 import { AxiosResponse, AxiosError } from 'axios'
 
@@ -44,17 +47,7 @@ const LoginForm = styled.div`
   width: 20rem;
   padding-top: 2rem;
   text-align: center;
-  background-color: rgb(250, 250, 250);
-  border-radius: 0.2rem;
-`
-
-const LoginInput = styled.input`
-  width: 18rem;
-  height: 3rem;
-  border: 2px solid grey;
   background-color: rgb(245, 245, 245);
-  margin: 0.5rem 0;
-  font-size: 1.2rem;
   border-radius: 0.2rem;
 `
 
@@ -65,37 +58,43 @@ const RedH4 = styled.h4`
 const Login: FunctionComponent = () => {
 
   const { dispatch } = useContext(StoreContext);
-  const [communicate, setCommunicate] = useState<string>(''); 
+  const [message, setMessage] = useState<string>('');
+  const { login: loginConfig, mainMessages } = config 
     
 
   const login = useRef<HTMLInputElement | any>(null);
   const password = useRef<HTMLInputElement | any>(null);
   
   const logInUser = () => {
-    if(login.current && password.current) {
-        const username: string = login.current?.value
+    const userName: string = login.current.value
+    const userPassword: string = password.current.value
+    if(userName && userPassword) {
         axios.post('http://localhost:8000/api-token-auth/', {
-            username: username,
+            username: userName,
             password: password.current?.value
           })
         .then((response: AxiosResponse) => {
             const token = response.data.token
             localStorage.setItem("token", String(token))
-            localStorage.setItem("username", username)
+            localStorage.setItem("username", userName)
             dispatch({
               type: ACTIONS.SET_TOKEN,
               payload: token 
             });
             dispatch({
               type: ACTIONS.SET_USER_NAME,
-              payload: username 
+              payload: userName 
             });
-        }, (error: AxiosError) => {
-          setCommunicate('Incorrect login or password')
-          login.current.value = ''
-          password.current.value = ''
         })
+        .catch((error: AxiosError) => {
+          if (error.response?.status === 400) setMessage(loginConfig.messages[0]) 
+          else setMessage(mainMessages[0])  
+        })
+    } else {
+      setMessage(loginConfig.messages[1])
     }
+    login.current.value = ''
+    password.current.value = ''
   }
 
     return (
@@ -104,11 +103,10 @@ const Login: FunctionComponent = () => {
           <UserIcon src={ mainIcon } alt="user"/>
           <LoginHeader><LightGreenSpan>Word</LightGreenSpan> Store</LoginHeader>
           <LoginForm >
-            <LoginInput ref={ login } type='text' placeholder="Login"/>
-            <LoginInput ref={ password } type='password' placeholder="Password"/>
-            { communicate && <RedH4>{ communicate }</RedH4> }
-            <Button onClickHandler={ logInUser } value='Log In'/>
-            
+            <Input width='18rem' reference={ login } type='text' placeholder={ loginConfig.login } />
+            <Input width='18rem' reference={ password } type='password' placeholder={ loginConfig.password } />
+            { message && <Message value={ message } setMessageFunc={ setMessage } /> }
+            <Button onClickHandler={ logInUser } value={ loginConfig.loginButton }/>
           </LoginForm>
         </LoginContainer>
       </LoginBackground>

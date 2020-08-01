@@ -23,7 +23,7 @@ class WordsViewSet(viewsets.ModelViewSet):
         data = request.data
         user = data.get('user')
         if user:
-            data['user'] = User.objects.get(id=user)
+            data['user'] = User.objects.get(username=user)
         else:
             return Response(data='No user in request', status=status.HTTP_400_BAD_REQUEST)
 

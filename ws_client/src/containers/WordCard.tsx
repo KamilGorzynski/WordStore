@@ -5,19 +5,11 @@ import { FunctionComponent } from 'react';
 import deleteIcon from '../assets/delete.png'
 import modifyIcon from '../assets/modify.png'
 import translatorIcon from '../assets/translator.png'
+import soundIcon from '../assets/sound.png'
 import axios from 'axios'
 import { AxiosError } from 'axios'
+import { Link } from 'react-router-dom';
 
-const WordCardContainer = styled.div`
-  /* background-color: rgb(44, 44, 44); */
-  background-color: rgb(60, 60, 60);
-  width: 70%;
-  height: 15rem;
-  border-radius: 1rem;
-  margin: 2rem auto;
-  padding: 1.5rem;
-  color: white;
-`
 
 const HeaderContainer = styled.div`
   border-bottom: 1px solid white;
@@ -27,7 +19,7 @@ const HeaderContainer = styled.div`
 `
 
 const HeaderItems = styled.div`
-  width: 17%;
+  width: 20%;
   display: flex;
   justify-content: space-between;
 `
@@ -62,6 +54,12 @@ type WordCartProps = {
 
 const WordCard: FunctionComponent<WordCartProps>= ({ id, word, definition, example, user, modulo }) => {
 
+  const readTheWord = () => {
+    const to_speak = new SpeechSynthesisUtterance(word)
+    to_speak.lang = 'en-US'
+    window.speechSynthesis.speak(to_speak)
+  }
+
   const deleteWord = () => {
     const authRequest = axios.create({
       baseURL: 'http://localhost:8000',
@@ -74,7 +72,13 @@ const WordCard: FunctionComponent<WordCartProps>= ({ id, word, definition, examp
           console.log(error)
         })
   }
-
+  const wordParams = { 
+    id: id,
+    word: word,
+    definition: definition,
+    example: example,
+    user: user
+  };
   const cardColor: string = modulo ? 'rgb(30, 30, 30)' : 'rgb(70, 70, 70)'
 
     return (
@@ -92,11 +96,14 @@ const WordCard: FunctionComponent<WordCartProps>= ({ id, word, definition, examp
              <HeaderContainer>
                <h2>{ word }</h2>
                 <HeaderItems>
+                    <Icon src={ soundIcon } alt="sound_icon" onClick={ readTheWord }/>
                     <a href={`https://translate.google.com/?hl=pl&tab=TT#view=home&op=translate&sl=en&tl=pl&text=${ word }`} target="_blank">
-                        <Icon src={ translatorIcon } alt="user"/>
+                        <Icon src={ translatorIcon } alt="translator_icon"/>
                     </a>
-                    <Icon src={ modifyIcon } alt="user"/>
-                    <Icon src={ deleteIcon } alt="user" onClick={ deleteWord }/>
+                    <Link to={ {pathname: '/modify', state: wordParams} }>
+                      <Icon src={ modifyIcon } alt="modify_icon"/>
+                    </Link>
+                    <Icon src={ deleteIcon } alt="delete_icon" onClick={ deleteWord }/>
                 </HeaderItems>
 
              </HeaderContainer>

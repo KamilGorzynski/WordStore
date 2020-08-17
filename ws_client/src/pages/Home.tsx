@@ -6,6 +6,7 @@ import Header from '../containers/Header'
 import{ BrowserRouter, Route, Switch} from 'react-router-dom'
 import List from './List'
 import Add from './Add'
+import Modify from './Modify'
 
 
 const HomeContainer = styled.div`
@@ -25,6 +26,7 @@ const Home: FunctionComponent = () => {
           <Switch>
             <Route exact path="/" component={List} />
             <Route exact path="/add" component={Add} />
+            <Route exact path="/modify" component={Modify} />
           </Switch>
         </HomeContainer>
       </div>

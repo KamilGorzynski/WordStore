@@ -27,6 +27,11 @@ const config = {
         'paragraph': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec dictum eu dolor vitae laoreetSed dapibus, leo non tristique hendrerit, dui nisl convallis lorem, eu pellentesque quam elit vel arcu.',
         'addButton': 'Add'
     },
+    'modify': {
+        'header': 'Modify Word',
+        'paragraph': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec dictum eu dolor vitae laoreetSed dapibus, leo non tristique hendrerit, dui nisl convallis lorem, eu pellentesque quam elit vel arcu.',
+        'addButton': 'Change'
+    },
     'wordForm': {
         'word': 'Word',
         'definition': 'Definition',

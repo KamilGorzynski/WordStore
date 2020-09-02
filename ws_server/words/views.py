@@ -19,13 +19,25 @@ class WordsViewSet(viewsets.ModelViewSet):
     def get_queryset(self):
         return Word.objects.filter(user_id=self.request.user.id)
 
-    def create(self, request, *args, **kwargs):
+    @staticmethod
+    def set_user(request):
         data = request.data
-        user = data.get('user')
+        user = request.user
         if user:
             data['user'] = User.objects.get(username=user)
+            return data
         else:
             return Response(data='No user in request', status=status.HTTP_400_BAD_REQUEST)
 
-        Word.objects.create(**data)
+    def create(self, request, *args, **kwargs):
+        Word.objects.create(**self.set_user(request))
         return Response(status=status.HTTP_201_CREATED)
+
+    def update(self, request, *args, **kwargs):
+        instance = self.get_object()
+        data = request.data
+        instance.word = data['word']
+        instance.definition = data['definition']
+        instance.example = data['example']
+        instance.save()
+        return Response(status=status.HTTP_200_OK)

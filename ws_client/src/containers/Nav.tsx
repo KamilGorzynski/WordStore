@@ -18,7 +18,7 @@ const Ul = styled.ul`
 
 const Nav: FunctionComponent = () => {
 
-    const nav= config.nav
+    const nav = config.nav
 
     return (
         <Ul>
